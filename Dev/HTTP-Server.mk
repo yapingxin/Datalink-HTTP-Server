@@ -35,7 +35,7 @@ PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="HTTP-Server.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
-LinkOptions            :=  
+LinkOptions            :=  -pthread
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
 IncludePCH             := 
 RcIncludePath          := 
@@ -60,7 +60,7 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) 
 
 
 
@@ -98,6 +98,14 @@ $(IntermediateDirectory)/src_HTTP-Server.c$(DependSuffix): src/HTTP-Server.c
 
 $(IntermediateDirectory)/src_HTTP-Server.c$(PreprocessSuffix): src/HTTP-Server.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_HTTP-Server.c$(PreprocessSuffix) src/HTTP-Server.c
+
+$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix): src/lib/C-Thread-Pool/thpool.c $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yapingxin/DevSpace/Datalink-HTTP-Server/Dev/src/lib/C-Thread-Pool/thpool.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(DependSuffix): src/lib/C-Thread-Pool/thpool.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(DependSuffix) -MM src/lib/C-Thread-Pool/thpool.c
+
+$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(PreprocessSuffix): src/lib/C-Thread-Pool/thpool.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(PreprocessSuffix) src/lib/C-Thread-Pool/thpool.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
