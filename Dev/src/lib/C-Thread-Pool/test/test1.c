@@ -19,9 +19,10 @@ static void task2();
 int run_test1()
 {
     int i;
+    threadpool thpool;
     
     puts("Making threadpool with 12 threads");
-    threadpool thpool = thpool_init(12);
+    thpool = thpool_init(12);
     
     puts("Adding 40 tasks to threadpool");
     

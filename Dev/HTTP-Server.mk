@@ -5,8 +5,8 @@
 ## Debug
 ProjectName            :=HTTP-Server
 ConfigurationName      :=Debug
-WorkspacePath          :=/home/yapingxin/DevSpace/Datalink-HTTP-Server/Dev
-ProjectPath            :=/home/yapingxin/DevSpace/Datalink-HTTP-Server/Dev
+WorkspacePath          :=/home/yaping/DevSpace/Datalink-HTTP-Server/Dev
+ProjectPath            :=/home/yaping/DevSpace/Datalink-HTTP-Server/Dev
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -14,7 +14,7 @@ CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Yaping Xin
 Date                   :=23/01/17
-CodeLitePath           :=/home/yapingxin/.codelite
+CodeLitePath           :=/home/yaping/.codelite
 LinkerName             :=gcc
 SharedObjectLinkerName :=gcc -shared -fPIC
 ObjectSuffix           :=.o
@@ -60,7 +60,7 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) 
 
 
 
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix): src/HTTP-Server.c $(IntermediateDirectory)/src_HTTP-Server.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/home/yapingxin/DevSpace/Datalink-HTTP-Server/Dev/src/HTTP-Server.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/HTTP-Server.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_HTTP-Server.c$(DependSuffix): src/HTTP-Server.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_HTTP-Server.c$(DependSuffix) -MM src/HTTP-Server.c
 
@@ -100,7 +100,7 @@ $(IntermediateDirectory)/src_HTTP-Server.c$(PreprocessSuffix): src/HTTP-Server.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_HTTP-Server.c$(PreprocessSuffix) src/HTTP-Server.c
 
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix): src/lib/C-Thread-Pool/thpool.c $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/home/yapingxin/DevSpace/Datalink-HTTP-Server/Dev/src/lib/C-Thread-Pool/thpool.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/C-Thread-Pool/thpool.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(DependSuffix): src/lib/C-Thread-Pool/thpool.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(DependSuffix) -MM src/lib/C-Thread-Pool/thpool.c
 
@@ -108,12 +108,20 @@ $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(PreprocessSuffix): src/
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(PreprocessSuffix) src/lib/C-Thread-Pool/thpool.c
 
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix): src/lib/C-Thread-Pool/test/test1.c $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/home/yapingxin/DevSpace/Datalink-HTTP-Server/Dev/src/lib/C-Thread-Pool/test/test1.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/C-Thread-Pool/test/test1.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(DependSuffix): src/lib/C-Thread-Pool/test/test1.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(DependSuffix) -MM src/lib/C-Thread-Pool/test/test1.c
 
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(PreprocessSuffix): src/lib/C-Thread-Pool/test/test1.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(PreprocessSuffix) src/lib/C-Thread-Pool/test/test1.c
+
+$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix): src/lib/C-Thread-Pool/test/test2.c $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/C-Thread-Pool/test/test2.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(DependSuffix): src/lib/C-Thread-Pool/test/test2.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(DependSuffix) -MM src/lib/C-Thread-Pool/test/test2.c
+
+$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(PreprocessSuffix): src/lib/C-Thread-Pool/test/test2.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(PreprocessSuffix) src/lib/C-Thread-Pool/test/test2.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

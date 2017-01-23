@@ -2,11 +2,11 @@
 //#include <pthread.h>
 //#include "thpool.h"
 
-#include "test/test1.h"
+#include "test/test2.h"
 
 
 int main(int argc, char **argv)
 {
-    run_test1();
+    run_test2();
     return 0;
 }
