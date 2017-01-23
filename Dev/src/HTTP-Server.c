@@ -1,9 +1,6 @@
 #include <stdio.h>
-#include <pthread.h>
-#include "thpool.h"
-
-#include <stdlib.h>
-#include <unistd.h>
+//#include <pthread.h>
+//#include "thpool.h"
 
 #include "test/test1.h"
 
