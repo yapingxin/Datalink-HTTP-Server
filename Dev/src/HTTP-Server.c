@@ -7,7 +7,6 @@
 
 int main(int argc, char **argv)
 {
-	
 	run_test1();
 	
 	return 0;
