@@ -1,0 +1,2 @@
+codelite-make -w Datalink-HTTP-Server.workspace
+
