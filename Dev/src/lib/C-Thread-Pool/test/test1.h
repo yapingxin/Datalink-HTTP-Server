@@ -1,0 +1,6 @@
+#ifndef _LIB_C_THREAD_POOL_TEST_TEST1_H_
+#define _LIB_C_THREAD_POOL_TEST_TEST1_H_
+
+int run_test1();
+
+#endif // _LIB_C_THREAD_POOL_TEST_TEST1_H_

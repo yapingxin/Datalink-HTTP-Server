@@ -13,6 +13,10 @@
       <VirtualDirectory Name="C-Thread-Pool">
         <File Name="src/lib/C-Thread-Pool/thpool.c"/>
         <File Name="src/lib/C-Thread-Pool/thpool.h"/>
+        <VirtualDirectory Name="test">
+          <File Name="src/lib/C-Thread-Pool/test/test1.c"/>
+          <File Name="src/lib/C-Thread-Pool/test/test1.h"/>
+        </VirtualDirectory>
       </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
