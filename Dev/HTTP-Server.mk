@@ -60,7 +60,8 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(ObjectSuffix) \
+	$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(ObjectSuffix) 
 
 
 
@@ -130,6 +131,54 @@ $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(DependSuffix): src/
 
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(PreprocessSuffix): src/lib/C-Thread-Pool/test/test2.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(PreprocessSuffix) src/lib/C-Thread-Pool/test/test2.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(ObjectSuffix): src/lib/LGPL/iLOG3/LOG.c $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/LGPL/iLOG3/LOG.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(DependSuffix): src/lib/LGPL/iLOG3/LOG.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(DependSuffix) -MM src/lib/LGPL/iLOG3/LOG.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(PreprocessSuffix): src/lib/LGPL/iLOG3/LOG.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(PreprocessSuffix) src/lib/LGPL/iLOG3/LOG.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(ObjectSuffix): src/lib/LGPL/iLOG3/LOGCONF.c $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/LGPL/iLOG3/LOGCONF.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(DependSuffix): src/lib/LGPL/iLOG3/LOGCONF.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(DependSuffix) -MM src/lib/LGPL/iLOG3/LOGCONF.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(PreprocessSuffix): src/lib/LGPL/iLOG3/LOGCONF.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(PreprocessSuffix) src/lib/LGPL/iLOG3/LOGCONF.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(ObjectSuffix): src/lib/LGPL/iLOG3/LOGS.c $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/LGPL/iLOG3/LOGS.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(DependSuffix): src/lib/LGPL/iLOG3/LOGS.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(DependSuffix) -MM src/lib/LGPL/iLOG3/LOGS.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(PreprocessSuffix): src/lib/LGPL/iLOG3/LOGS.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(PreprocessSuffix) src/lib/LGPL/iLOG3/LOGS.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(ObjectSuffix): src/lib/LGPL/iLOG3/LOGSCONF.c $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/LGPL/iLOG3/LOGSCONF.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(DependSuffix): src/lib/LGPL/iLOG3/LOGSCONF.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(DependSuffix) -MM src/lib/LGPL/iLOG3/LOGSCONF.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(PreprocessSuffix): src/lib/LGPL/iLOG3/LOGSCONF.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(PreprocessSuffix) src/lib/LGPL/iLOG3/LOGSCONF.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(ObjectSuffix): src/lib/LGPL/iLOG3/test/test_config.c $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/LGPL/iLOG3/test/test_config.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(DependSuffix): src/lib/LGPL/iLOG3/test/test_config.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(DependSuffix) -MM src/lib/LGPL/iLOG3/test/test_config.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(PreprocessSuffix): src/lib/LGPL/iLOG3/test/test_config.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(PreprocessSuffix) src/lib/LGPL/iLOG3/test/test_config.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(ObjectSuffix): src/lib/LGPL/iLOG3/test/test_demo.c $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/LGPL/iLOG3/test/test_demo.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(DependSuffix): src/lib/LGPL/iLOG3/test/test_demo.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(DependSuffix) -MM src/lib/LGPL/iLOG3/test/test_demo.c
+
+$(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(PreprocessSuffix): src/lib/LGPL/iLOG3/test/test_demo.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(PreprocessSuffix) src/lib/LGPL/iLOG3/test/test_demo.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

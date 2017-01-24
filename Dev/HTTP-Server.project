@@ -24,6 +24,22 @@
         <File Name="src/lib/HTTP-Parser/http_parser.c"/>
         <File Name="src/lib/HTTP-Parser/http_parser.h"/>
       </VirtualDirectory>
+      <VirtualDirectory Name="LGPL">
+        <VirtualDirectory Name="iLOG3">
+          <File Name="src/lib/LGPL/iLOG3/LOG.c"/>
+          <File Name="src/lib/LGPL/iLOG3/LOG.h"/>
+          <File Name="src/lib/LGPL/iLOG3/LOGCONF.c"/>
+          <File Name="src/lib/LGPL/iLOG3/LOGCONF.h"/>
+          <File Name="src/lib/LGPL/iLOG3/LOGS.c"/>
+          <File Name="src/lib/LGPL/iLOG3/LOGS.h"/>
+          <File Name="src/lib/LGPL/iLOG3/LOGSCONF.c"/>
+          <File Name="src/lib/LGPL/iLOG3/LOGSCONF.h"/>
+          <VirtualDirectory Name="test">
+            <File Name="src/lib/LGPL/iLOG3/test/test_config.c"/>
+            <File Name="src/lib/LGPL/iLOG3/test/test_demo.c"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+      </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="doc">
@@ -38,6 +54,15 @@
         <File Name="src/lib/HTTP-Parser/doc/LICENSE-MIT"/>
         <File Name="src/lib/HTTP-Parser/doc/Makefile"/>
         <File Name="src/lib/HTTP-Parser/doc/README.md"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="LGPL">
+        <VirtualDirectory Name="iLOG3">
+          <File Name="src/lib/LGPL/iLOG3/doc/INSTALL"/>
+          <File Name="src/lib/LGPL/iLOG3/doc/LICENSE"/>
+          <File Name="src/lib/LGPL/iLOG3/doc/README"/>
+          <File Name="src/lib/LGPL/iLOG3/doc/README-CN"/>
+          <File Name="src/lib/LGPL/iLOG3/doc/README-EN"/>
+        </VirtualDirectory>
       </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
