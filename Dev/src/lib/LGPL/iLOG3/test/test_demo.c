@@ -12,7 +12,7 @@
 #define LOG_STYLES_EVENT	( LOG_STYLE_DATETIME | LOG_STYLE_CUSTLABEL1 | LOG_STYLE_FORMAT | LOG_STYLE_NEWLINE )
 #define LOG_STYLES_SIMPLE	( LOG_STYLE_FORMAT | LOG_STYLE_NEWLINE )
 
-int test_demo()
+int iLOG3_test_demo()
 {
 	LOG		*g = NULL , *g3 = NULL , *g4 = NULL ;
 #if ( defined __STDC_VERSION__ ) && ( __STDC_VERSION__ >= 199901 )
@@ -136,6 +136,6 @@ int test_demo()
 /*
 int main()
 {
-	return -test_demo();
+	return -iLOG3_test_demo();
 }
  * */
