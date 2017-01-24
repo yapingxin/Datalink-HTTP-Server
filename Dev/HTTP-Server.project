@@ -20,6 +20,10 @@
           <File Name="src/lib/C-Thread-Pool/test/test2.h"/>
         </VirtualDirectory>
       </VirtualDirectory>
+      <VirtualDirectory Name="HTTP-Parser">
+        <File Name="src/lib/HTTP-Parser/http_parser.c"/>
+        <File Name="src/lib/HTTP-Parser/http_parser.h"/>
+      </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="doc">
@@ -27,6 +31,13 @@
       <VirtualDirectory Name="C-Thread-Pool">
         <File Name="src/lib/C-Thread-Pool/LICENSE"/>
         <File Name="src/lib/C-Thread-Pool/README.md"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="HTTP-Parser">
+        <File Name="src/lib/HTTP-Parser/doc/AUTHORS"/>
+        <File Name="src/lib/HTTP-Parser/doc/http_parser.gyp"/>
+        <File Name="src/lib/HTTP-Parser/doc/LICENSE-MIT"/>
+        <File Name="src/lib/HTTP-Parser/doc/Makefile"/>
+        <File Name="src/lib/HTTP-Parser/doc/README.md"/>
       </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>

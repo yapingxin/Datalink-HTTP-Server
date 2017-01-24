@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Yaping Xin
-Date                   :=23/01/17
+Date                   :=24/01/17
 CodeLitePath           :=/home/yaping/.codelite
 LinkerName             :=gcc
 SharedObjectLinkerName :=gcc -shared -fPIC
@@ -60,7 +60,7 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) 
 
 
 
@@ -106,6 +106,14 @@ $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(DependSuffix): src/lib/
 
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(PreprocessSuffix): src/lib/C-Thread-Pool/thpool.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(PreprocessSuffix) src/lib/C-Thread-Pool/thpool.c
+
+$(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(ObjectSuffix): src/lib/HTTP-Parser/http_parser.c $(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/HTTP-Parser/http_parser.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(DependSuffix): src/lib/HTTP-Parser/http_parser.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(DependSuffix) -MM src/lib/HTTP-Parser/http_parser.c
+
+$(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(PreprocessSuffix): src/lib/HTTP-Parser/http_parser.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(PreprocessSuffix) src/lib/HTTP-Parser/http_parser.c
 
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix): src/lib/C-Thread-Pool/test/test1.c $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/C-Thread-Pool/test/test1.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IncludePath)

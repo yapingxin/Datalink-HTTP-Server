@@ -1,1 +1,1 @@
-./Debug/src_HTTP-Server.c.o ./Debug/src_lib_C-Thread-Pool_thpool.c.o ./Debug/src_lib_C-Thread-Pool_test_test1.c.o ./Debug/src_lib_C-Thread-Pool_test_test2.c.o
+./Debug/src_HTTP-Server.c.o ./Debug/src_lib_C-Thread-Pool_thpool.c.o ./Debug/src_lib_HTTP-Parser_http_parser.c.o ./Debug/src_lib_C-Thread-Pool_test_test1.c.o ./Debug/src_lib_C-Thread-Pool_test_test2.c.o
