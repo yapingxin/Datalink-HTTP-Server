@@ -12,4 +12,6 @@
 #define accept_path_buf_size	 512
 #define accept_protocol_buf_size 16
 
+int get_threadpool_threads_count();
+
 #endif // _UTILITY_SERVICE_CONFIG_H_
