@@ -20,11 +20,23 @@
 
 #include "service_config.h"
 #include "recvlogic.h"
+#include "http_response.h"
 //#include "logfunc.h"
 
+static unsigned char g_service_poweron = 1;
+static threadpool* g_accept_thpool = NULL;
 
 static void error_die(const char *msg);
 static int disable_tcp_nagle(int sockfd);
+static int setsockopt_timeout(int sockfd, int timeout_ms);
+static void accept_request(const int client_sockfd);
+static void log_client_info(struct sockaddr_in *p_client_addr);
+
+void terminate_threadpool(threadpool* p_thpool)
+{
+    thpool_wait(*p_thpool);
+    thpool_destroy(*p_thpool);
+}
 
 int startup(uint16_t port)
 {
@@ -57,6 +69,33 @@ int startup(uint16_t port)
 	return(server_sockfd);
 }
 
+void mainloop_recv(const int server_sockfd, threadpool* p_thpool)
+{
+    int client_sockfd = -1;
+    int client_addr_len = sizeof(struct sockaddr_in);
+    struct sockaddr_in client_addr = { 0 };
+    
+    g_accept_thpool = p_thpool;
+    if(g_accept_thpool == NULL)
+    {
+        error_die("mainloop_recv() parameter p_thpool is NULL.");
+    }
+    
+    while (g_service_poweron)
+    {
+        client_sockfd = accept(server_sockfd, (struct sockaddr *)&client_addr, &client_addr_len);
+        if (client_sockfd == -1)
+        {
+            error_die("accept");
+        }
+        
+        setsockopt_timeout(client_sockfd, 3000);
+        
+        log_client_info(&client_addr);
+        thpool_add_work(*p_thpool, (void*)accept_request, client_sockfd);
+    }
+}
+
 static void error_die(const char *msg)
 {
 	//ZF_LOGF("%s", msg);
@@ -71,59 +110,14 @@ static int disable_tcp_nagle(int sockfd)
     return setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
 }
 
-
-/*
-static void accept_request(const int client_sockfd);
-static void log_client_info(struct sockaddr_in *p_client_addr);
-
-
-static unsigned char g_service_poweron = 1;
-
-
-
-
-int setsockopt_timeout(int sockfd, int timeout_ms)
+static int setsockopt_timeout(int sockfd, int timeout_ms)
 {
-	//struct timeval timeout;
-	//timeout.tv_sec = timeout_seconds;
-	//timeout.tv_usec = 0;
-
-	return setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout_ms, sizeof(int));
+    //struct timeval timeout;
+    //timeout.tv_sec = timeout_seconds;
+    //timeout.tv_usec = 0;
+    
+    return setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout_ms, sizeof(int));
 }
-
-
-
-
-
-
-
-
-void mainloop_recv(const int server_sockfd)
-{
-	int client_sockfd = -1;
-	int client_addr_len = sizeof(struct sockaddr_in);
-	struct sockaddr_in client_addr = { 0 };
-	pthread_t request_thread = NULL;
-
-	while (g_service_poweron)
-	{
-		client_sockfd = accept(server_sockfd, (struct sockaddr *)&client_addr, &client_addr_len);
-		if (client_sockfd == -1)
-		{
-			error_die("accept");
-		}
-
-		setsockopt_timeout(client_sockfd, 3000);
-
-		log_client_info(&client_addr);
-
-		if (pthread_create(&request_thread, NULL, accept_request, client_sockfd) != 0)
-		{
-			perror("pthread_create");
-		}
-	}
-}
-
 
 static void accept_request(const int client_sockfd)
 {
@@ -131,6 +125,13 @@ static void accept_request(const int client_sockfd)
 	static char additional_msg[accept_method_buf_size] = { 0 };
 
 	size_t num_bytes_rcvd = 0;
+    
+    /*
+    if(g_accept_thpool)
+    {
+        error_die("mainloop_recv() parameter p_thpool is NULL.");
+    }
+     * **/
 
 	memset(buf, 0, accept_line_buf_size);
 	memset(additional_msg, 0, accept_method_buf_size);
@@ -138,18 +139,18 @@ static void accept_request(const int client_sockfd)
 	num_bytes_rcvd = recv(client_sockfd, buf, accept_line_buf_size, 0);
 	
 
-	ZF_LOGI("Recv: %s", buf);
+	//ZF_LOGI("Recv: %s", buf);
 	//printf("Recv: %s\n", buf);
 
 	if (strcmp(buf, "Cmd: QUIT") == 0)
 	{
-		ZF_LOGI("Cmd: QUIT ==> Program Exit.");
+		//ZF_LOGI("Cmd: QUIT ==> Program Exit.");
 		printf("Cmd: QUIT ==> Program Exit.\n");
 
 		close(client_sockfd);
 		g_service_poweron = 0;
 
-		wait(3000);
+		terminate_threadpool(g_accept_thpool);
 		return;
 	}
 
@@ -164,15 +165,13 @@ static void accept_request(const int client_sockfd)
 
 static void log_client_info(struct sockaddr_in *p_client_addr)
 {
-	static char client_addr_txt[INET_ADDRSTRLEN] = { 0 };
-
-	const char *ret_constxt = inet_ntop(AF_INET, &p_client_addr->sin_addr.s_addr, client_addr_txt, INET_ADDRSTRLEN);
-	if (ret_constxt != NULL)
-	{
-		ZF_LOGI("Handling client %s/%i", client_addr_txt, ntohs(p_client_addr->sin_port));
-		//printf("Handling client %s/%d\n", client_name, ntohs(p_client_addr->sin_port));
-	}
+    static char client_addr_txt[INET_ADDRSTRLEN] = { 0 };
+    
+    const char *ret_constxt = inet_ntop(AF_INET, &p_client_addr->sin_addr.s_addr, client_addr_txt, INET_ADDRSTRLEN);
+    if (ret_constxt != NULL)
+    {
+        //ZF_LOGI("Handling client %s/%i", client_addr_txt, ntohs(p_client_addr->sin_port));
+        printf("Handling client %s/%d\n", client_addr_txt, ntohs(p_client_addr->sin_port));
+    }
 }
-
-**/
 

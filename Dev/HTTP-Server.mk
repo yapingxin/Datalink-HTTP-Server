@@ -60,8 +60,8 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_recvlogic.c$(ObjectSuffix) $(IntermediateDirectory)/src_service_config.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(ObjectSuffix) \
-	$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_HTTP-Server.c$(ObjectSuffix) $(IntermediateDirectory)/src_recvlogic.c$(ObjectSuffix) $(IntermediateDirectory)/src_service_config.c$(ObjectSuffix) $(IntermediateDirectory)/src_http_response.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_HTTP-Parser_http_parser.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test1.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_C-Thread-Pool_test_test2.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOG.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGCONF.c$(ObjectSuffix) \
+	$(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGS.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_LOGSCONF.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_config.c$(ObjectSuffix) $(IntermediateDirectory)/src_lib_LGPL_iLOG3_test_test_demo.c$(ObjectSuffix) 
 
 
 
@@ -115,6 +115,14 @@ $(IntermediateDirectory)/src_service_config.c$(DependSuffix): src/service_config
 
 $(IntermediateDirectory)/src_service_config.c$(PreprocessSuffix): src/service_config.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_service_config.c$(PreprocessSuffix) src/service_config.c
+
+$(IntermediateDirectory)/src_http_response.c$(ObjectSuffix): src/http_response.c $(IntermediateDirectory)/src_http_response.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/http_response.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_http_response.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_http_response.c$(DependSuffix): src/http_response.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_http_response.c$(ObjectSuffix) -MF$(IntermediateDirectory)/src_http_response.c$(DependSuffix) -MM src/http_response.c
+
+$(IntermediateDirectory)/src_http_response.c$(PreprocessSuffix): src/http_response.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_http_response.c$(PreprocessSuffix) src/http_response.c
 
 $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix): src/lib/C-Thread-Pool/thpool.c $(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "/home/yaping/DevSpace/Datalink-HTTP-Server/Dev/src/lib/C-Thread-Pool/thpool.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_lib_C-Thread-Pool_thpool.c$(ObjectSuffix) $(IncludePath)

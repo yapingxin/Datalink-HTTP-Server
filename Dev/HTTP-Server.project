@@ -48,6 +48,8 @@
     <File Name="src/recvlogic.h"/>
     <File Name="src/service_config.h"/>
     <File Name="src/service_config.c"/>
+    <File Name="src/http_response.c"/>
+    <File Name="src/http_response.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="doc">
     <VirtualDirectory Name="lib">
