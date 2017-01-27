@@ -23,35 +23,10 @@
 //#include "logfunc.h"
 
 
+static void error_die(const char *msg);
+static int disable_tcp_nagle(int sockfd);
 
-
-/*
-static void accept_request(const int client_sockfd);
-static void log_client_info(struct sockaddr_in *p_client_addr);
-
-
-static unsigned char g_service_poweron = 1;
-
-
-int disable_tcp_nagle(int sockfd)
-{
-	int flag = 1;
-	int ret = 0;
-
-	return setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
-}
-
-int setsockopt_timeout(int sockfd, int timeout_ms)
-{
-	//struct timeval timeout;
-	//timeout.tv_sec = timeout_seconds;
-	//timeout.tv_usec = 0;
-
-	return setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout_ms, sizeof(int));
-}
-
-
-int startup(unsigned short port)
+int startup(uint16_t port)
 {
 	int server_sockfd = 0;
 	struct sockaddr_in sock_addr;
@@ -69,7 +44,7 @@ int startup(unsigned short port)
 	sock_addr.sin_port = htons(port);
 	sock_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-	if (bind(server_sockfd, (struct sockaddr *)&sock_addr, sizeof(struct sockaddr_in)) < 0)
+	if (bind(server_sockfd, (struct sockaddr *)(&sock_addr), sizeof(struct sockaddr_in)) < 0)
 	{
 		error_die("bind() failed.");
 	}
@@ -82,14 +57,45 @@ int startup(unsigned short port)
 	return(server_sockfd);
 }
 
-
-void error_die(const char *msg)
+static void error_die(const char *msg)
 {
-	ZF_LOGF("%s", msg);
+	//ZF_LOGF("%s", msg);
 
 	perror(msg);
 	exit(1);
 }
+
+static int disable_tcp_nagle(int sockfd)
+{
+	int flag = 1;
+    return setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
+}
+
+
+/*
+static void accept_request(const int client_sockfd);
+static void log_client_info(struct sockaddr_in *p_client_addr);
+
+
+static unsigned char g_service_poweron = 1;
+
+
+
+
+int setsockopt_timeout(int sockfd, int timeout_ms)
+{
+	//struct timeval timeout;
+	//timeout.tv_sec = timeout_seconds;
+	//timeout.tv_usec = 0;
+
+	return setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout_ms, sizeof(int));
+}
+
+
+
+
+
+
 
 
 void mainloop_recv(const int server_sockfd)

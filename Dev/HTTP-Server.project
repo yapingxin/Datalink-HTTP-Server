@@ -40,6 +40,9 @@
           </VirtualDirectory>
         </VirtualDirectory>
       </VirtualDirectory>
+      <VirtualDirectory Name="Common">
+        <File Name="src/lib/Common/datatypes.h"/>
+      </VirtualDirectory>
     </VirtualDirectory>
     <File Name="src/recvlogic.c"/>
     <File Name="src/recvlogic.h"/>
@@ -84,6 +87,7 @@
       <Compiler Options="-g;-O0;-Wall" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
         <IncludePath Value="src/lib/C-Thread-Pool"/>
+        <IncludePath Value="src/lib/Common"/>
       </Compiler>
       <Linker Options="-pthread" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
@@ -124,6 +128,7 @@
       <Compiler Options="-O2;-Wall" C_Options="-O2;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
         <IncludePath Value="src/lib/C-Thread-Pool"/>
+        <IncludePath Value="src/lib/Common"/>
         <Preprocessor Value="NDEBUG"/>
       </Compiler>
       <Linker Options="-pthread" Required="yes"/>
