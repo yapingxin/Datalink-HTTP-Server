@@ -26,6 +26,9 @@ void default_http_response(const int client_sockfd, const char * msg)
 	static char method[accept_method_buf_size] = { 0 };
 	static char url[accept_url_buf_size] = { 0 };
 	static char protocol[accept_protocol_buf_size] = { 0 };
+    
+    size_t i = 0;
+	size_t j = 0;
 	
 	pthread_mutex_lock(&mutex1);
 
@@ -38,10 +41,6 @@ void default_http_response(const int client_sockfd, const char * msg)
 	//method[0] = '\0';
 	//url[0] = '\0';
 	//protocol[0] = '\0';
-	
-
-	size_t i = 0;
-	size_t j = 0;
 
 	while (!ISspace(msg[i]) && (i < accept_method_buf_size))
 	{
