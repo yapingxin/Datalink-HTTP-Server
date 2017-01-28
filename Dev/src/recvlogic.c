@@ -72,7 +72,7 @@ int startup(uint16_t port)
 void mainloop_recv(const int server_sockfd, threadpool* p_thpool)
 {
     int client_sockfd = -1;
-    int client_addr_len = sizeof(struct sockaddr_in);
+    size_t client_addr_len = sizeof(struct sockaddr_in);
     struct sockaddr_in client_addr = { 0 };
     
     g_accept_thpool = p_thpool;
@@ -83,7 +83,7 @@ void mainloop_recv(const int server_sockfd, threadpool* p_thpool)
     
     while (g_service_poweron)
     {
-        client_sockfd = accept(server_sockfd, (struct sockaddr *)&client_addr, &client_addr_len);
+        client_sockfd = accept(server_sockfd, (struct sockaddr *)&client_addr, (socklen_t *)(&client_addr_len));
         if (client_sockfd == -1)
         {
             error_die("accept");
@@ -92,7 +92,7 @@ void mainloop_recv(const int server_sockfd, threadpool* p_thpool)
         setsockopt_timeout(client_sockfd, 3000);
         
         log_client_info(&client_addr);
-        thpool_add_work(*p_thpool, (void*)accept_request, client_sockfd);
+        thpool_add_work(*p_thpool, accept_request, (void*)client_sockfd);
     }
 }
 
@@ -124,7 +124,7 @@ static void accept_request(const int client_sockfd)
 	static char buf[accept_line_buf_size] = { 0 };
 	static char additional_msg[accept_method_buf_size] = { 0 };
 
-	size_t num_bytes_rcvd = 0;
+	ssize_t num_bytes_rcvd = 0;
     
     /*
     if(g_accept_thpool)
@@ -155,7 +155,7 @@ static void accept_request(const int client_sockfd)
 	}
 
 	
-	sprintf(additional_msg, "<hr/>num_bytes_rcvd = %d\r\n", num_bytes_rcvd);
+	sprintf(additional_msg, "<hr/>num_bytes_rcvd = %ld\r\n", num_bytes_rcvd);
 	strcat(buf, additional_msg);
 
 	default_http_response(client_sockfd, buf);
