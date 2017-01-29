@@ -43,7 +43,7 @@ int startup(uint16_t port)
 	int server_sockfd = 0;
 	struct sockaddr_in sock_addr;
 
-	server_sockfd = socket(PF_INET, SOCK_STREAM, 0);
+	server_sockfd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (server_sockfd == -1)
 	{
 		error_die("socket() failed.");
