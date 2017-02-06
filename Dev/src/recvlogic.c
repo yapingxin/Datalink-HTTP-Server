@@ -23,8 +23,13 @@
 #include "http_response.h"
 //#include "logfunc.h"
 
+#include "http_parser.h"
+
 static unsigned char g_service_poweron = 1;
 static threadpool* g_accept_thpool = NULL;
+
+static http_parser_settings http_decoder_settings = { 0 };
+static http_parser *p_http_decoder_parser = NULL;
 
 static void error_die(const char *msg);
 static int disable_tcp_nagle(int sockfd);

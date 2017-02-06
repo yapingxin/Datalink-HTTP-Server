@@ -90,6 +90,7 @@
         <IncludePath Value="."/>
         <IncludePath Value="src/lib/C-Thread-Pool"/>
         <IncludePath Value="src/lib/Common"/>
+        <IncludePath Value="src/lib/HTTP-Parser"/>
       </Compiler>
       <Linker Options="-pthread" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
@@ -131,6 +132,7 @@
         <IncludePath Value="."/>
         <IncludePath Value="src/lib/C-Thread-Pool"/>
         <IncludePath Value="src/lib/Common"/>
+        <IncludePath Value="src/lib/HTTP-Parser"/>
         <Preprocessor Value="NDEBUG"/>
       </Compiler>
       <Linker Options="-pthread" Required="yes"/>
