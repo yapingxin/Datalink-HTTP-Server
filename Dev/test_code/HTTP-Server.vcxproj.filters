@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\service_config.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HTTP-Server.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\recvlogic.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\HTTP-Parser\http_parser.c">
+      <Filter>src\lib\HTTP-Parser</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="doc">
+      <UniqueIdentifier>{fb9a60c4-1bc8-43c6-a2cd-1e6ed2bc12cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4ac3bc5e-b97d-4ad6-8d2b-b1cab4454a5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lib">
+      <UniqueIdentifier>{b31c47d8-f220-47cb-8c2f-3f00d447a151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lib\Common">
+      <UniqueIdentifier>{8d4fe6db-55d9-44b8-a4fd-b4102dbc494e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lib\HTTP-Parser">
+      <UniqueIdentifier>{03c01c76-3e14-4cb8-bbac-56281340d6b8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README">
+      <Filter>doc</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\service_config.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\recvlogic.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\Common\datatypes.h">
+      <Filter>src\lib\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\HTTP-Parser\http_parser.h">
+      <Filter>src\lib\HTTP-Parser</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
